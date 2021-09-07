@@ -23,10 +23,15 @@ function App() {
       });
   }, []);
   console.log("s", state);
+  // console.log("image", {`https://ipfs.io/ipfs/${state.image.split('/')[2]`})
   return (
     <div className="App">
-      <header className="App-header"></header>
+      {/* <header className="App-header"></header> */}
       <div>{state && state.name}</div>
+      <img
+        src={`https://ipfs.io/ipfs/${state && state.image.split("/")[2]}`}
+        alt={state && state.name}
+      ></img>
       <div></div>
     </div>
   );
