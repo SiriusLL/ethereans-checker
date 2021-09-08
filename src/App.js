@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import { isDOMComponentElement } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 function App() {
   const [data, setData] = useState();
