@@ -74,36 +74,38 @@ function App() {
           <p>Please entinput</p>
         )}
       </div>
-      <div className="userInput">
-        <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-          {/* <label for="ident">Your NFT number here</label> */}
-          <input
-            id="ident"
-            name="ident"
-            placeholder="NFT Number"
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-              // getData();
-            }}
-            type="text"
-          />
-          {/* <p className={invalid()}>Number must be between 1 and 10,000</p> */}
-          <button onClick={() => validate(input)}>submit</button>
-        </form>
-      </div>
-      <div className="traits">
-        <div>{data && data.name}</div>
-        <table>
-          {data &&
-            data.attributes.map((attr, i) => (
-              // <div key={i}>{`${attr.trait_type}: ${attr.value}`}</div>
-              <tr key={i} className={rowColor(i)}>
-                <td>{`${attr.trait_type}`}</td>
-                <td>{`${attr.value}`}</td>
-              </tr>
-            ))}
-        </table>
+      <div>
+        <div className="traits">
+          <div>{data && data.name}</div>
+          <table>
+            {data &&
+              data.attributes.map((attr, i) => (
+                // <div key={i}>{`${attr.trait_type}: ${attr.value}`}</div>
+                <tr key={i} className={rowColor(i)}>
+                  <td>{`${attr.trait_type}`}</td>
+                  <td>{`${attr.value}`}</td>
+                </tr>
+              ))}
+          </table>
+        </div>
+        <div className="userInput">
+          <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
+            {/* <label for="ident">Your NFT number here</label> */}
+            <input
+              id="ident"
+              name="ident"
+              placeholder="NFT Number"
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                // getData();
+              }}
+              type="text"
+            />
+            {/* <p className={invalid()}>Number must be between 1 and 10,000</p> */}
+            <button onClick={() => validate(input)}>AQUIRE TARGET</button>
+          </form>
+        </div>
       </div>
     </div>
   );

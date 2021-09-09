@@ -42,6 +42,10 @@ body {
 table {
   text-align: left;
   width: 100%;
+  color: hsl(0, 0%, 80%);
+  text-shadow: 0 0 0.1em currentColor;
+  transform-style: preserve-3d;
+  animation: write linear both;
 }
 
 .even-r {
@@ -52,9 +56,29 @@ table {
   background-color: rgb(55, 72, 102);
 }
 
+input {
+  background-color: pink;
+  color: cornflowerblue;
+  border-radius: 15px;
+  width: 100%;
+}
+
+button {
+  background-color: blue;
+  color: pink;
+  border-radius: 25px;
+  padding: 10px;
+  width: 100%;
+}
+
 @media (min-width: 941px) {
   .App {
     display: flex;
     flex-direction: row;
+  }
+  .image {
+    width: 40%;
+    height: auto;
+    padding: 20px;
   }
 } ;
