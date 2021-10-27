@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Grid from "./Components/Grid";
-import Buttons from "./Components/Buttons";
+// import Buttons from "./Components/Buttons";
 
 function App() {
   const [data, setData] = useState();
