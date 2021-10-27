@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
+import Grid from "./Components/Grid";
+import Buttons from "./Components/Buttons";
 
 function App() {
   const [data, setData] = useState();
   const [input, setInput] = useState();
+
   // useEffect(() => {
   //   axios
   //     .get(
@@ -59,55 +62,19 @@ function App() {
     }
   };
 
-  // {(i % 2 === 0) ? className="even-r" : className="odd-r"}
-
   return (
-    <div className="App">
-      <div className="image">
-        {data ? console.log("n", data.image.split("/")[2]) : null}
-        {data ? (
-          <img
-            src={`https://ipfs.io/ipfs/${data && data.image.split("/")[2]}`}
-            alt={data && data.name}
-          />
-        ) : (
-          <p>Please entinput</p>
-        )}
+    <>
+      <div className="App">
+        <Grid
+          data={data}
+          input={input}
+          setInput={setInput}
+          validate={validate}
+          rowColor={rowColor}
+        />
+        {/* <Buttons /> */}
       </div>
-      <div>
-        <div className="traits">
-          <div>{data && data.name}</div>
-          <table>
-            {data &&
-              data.attributes.map((attr, i) => (
-                // <div key={i}>{`${attr.trait_type}: ${attr.value}`}</div>
-                <tr key={i} className={rowColor(i)}>
-                  <td>{`${attr.trait_type}`}</td>
-                  <td>{`${attr.value}`}</td>
-                </tr>
-              ))}
-          </table>
-        </div>
-        <div className="userInput">
-          <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-            {/* <label for="ident">Your NFT number here</label> */}
-            <input
-              id="ident"
-              name="ident"
-              placeholder="NFT Number"
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value);
-                // getData();
-              }}
-              type="text"
-            />
-            {/* <p className={invalid()}>Number must be between 1 and 10,000</p> */}
-            <button onClick={() => validate(input)}>AQUIRE TARGET</button>
-          </form>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
 
