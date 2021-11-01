@@ -5,26 +5,40 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  /* background-color: blue; */
-  padding: 10%;
-  /* //use rem for padding margin */
-  /* text-align: center; */
+  /* align-items: center; */
+  /* padding: 10%; */
 }
-/* body {
+
+.nav-bar {
   display: flex;
-  flex-direction: column;
-  background-color: blue;
-} */
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(190, 190, 243);
+  background-color: rgb(85, 59, 20);
+  height: 80px;
+  width: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-bottom: 2px solid rgb(92, 67, 67);
+}
+
+.content {
+  justify-content: center;
+  align-items: center;
+  /* padding: 10%; */
+  padding-top: 10%;
+  margin: auto;
+}
 
 .image {
   justify-content: center;
-  border: 10px solid rgba(40, 241, 40, 0.479);
+  /* border: 10px solid rgba(40, 241, 40, 0.479); */
+  text-align: center;
   /* width: 100%; */
   width: 350px;
   height: auto;
-  /* object-fit: contain; */
+  object-fit: contain;
 }
 .image img {
   max-width: 100%;
@@ -62,6 +76,11 @@ table {
   background-color: rgb(55, 72, 102);
 }
 
+.error {
+  border: 1px solid red;
+  color: red;
+}
+
 input {
   background-color: pink;
   color: cornflowerblue;
@@ -73,7 +92,7 @@ input {
 
 button {
   justify-content: center;
-  background-color: blue;
+  background-color: goldenrod;
   color: pink;
   border-radius: 25px;
   padding: 10px;
@@ -84,12 +103,17 @@ button {
 @media (min-width: 941px) {
   .App {
     display: flex;
+    flex-direction: column;
+  }
+  .content {
+    display: flex;
     flex-direction: row;
   }
   .image {
     width: 600px;
     height: auto;
     padding: 20px;
+    object-fit: contain;
   }
 
   table {

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Grid from "./Components/Grid";
-// import Buttons from "./Components/Buttons";
+import NavBar from "./Components/NavBar";
 
 function App() {
   const [data, setData] = useState();
-  const [input, setInput] = useState();
+  // const [input, setInput] = useState();
 
   // useEffect(() => {
   //   axios
@@ -37,22 +37,20 @@ function App() {
         console.log("Error", error);
       });
   };
-  // console.log("s", input);
 
-  const validate = (rawValue) => {
-    console.log("rawValue", rawValue);
-    let value = Number(rawValue);
-    if (value <= 0 || value > 11000) {
-      console.log("invalid");
-      // const invalid = () => invalid
-      return <div>Must be a number between 1 and 11000</div>;
-      // return;
-    }
-    // console.log(value);
-    // setNumber(value);
-    getData(value);
-    setInput("");
-  };
+  // const validate = (rawValue) => {
+  //   console.log("rawValue", rawValue);
+  //   let value = Number(rawValue);
+  //   if (value <= 0 || value > 11000) {
+  //     console.log("invalid");
+  //     // const invalid = () => invalid
+  //     return <div>Must be a number between 1 and 11000</div>;
+  //     // return;
+  //   }
+
+  //   getData(value);
+  //   setInput("");
+  // };
 
   const rowColor = (index) => {
     if (index % 2 === 0) {
@@ -65,14 +63,17 @@ function App() {
   return (
     <>
       <div className="App">
-        <Grid
-          data={data}
-          input={input}
-          setInput={setInput}
-          validate={validate}
-          rowColor={rowColor}
-        />
-        {/* <Buttons /> */}
+        <NavBar />
+        <div className="content">
+          <Grid
+            data={data}
+            // input={input}
+            // setInput={setInput}
+            validate={"placehlder"}
+            rowColor={rowColor}
+            getData={getData}
+          />
+        </div>
       </div>
     </>
   );
