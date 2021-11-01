@@ -23,6 +23,13 @@ function App() {
   //     });
   // }, [input]);
 
+  const ethereum = window.ethereum;
+
+  if (ethereum)
+    ethereum.on("accountsChanged", (accounts) => {
+      console.log(accounts[0]);
+    });
+
   const getData = async (input) => {
     await axios
       .get(
@@ -37,20 +44,6 @@ function App() {
         console.log("Error", error);
       });
   };
-
-  // const validate = (rawValue) => {
-  //   console.log("rawValue", rawValue);
-  //   let value = Number(rawValue);
-  //   if (value <= 0 || value > 11000) {
-  //     console.log("invalid");
-  //     // const invalid = () => invalid
-  //     return <div>Must be a number between 1 and 11000</div>;
-  //     // return;
-  //   }
-
-  //   getData(value);
-  //   setInput("");
-  // };
 
   const rowColor = (index) => {
     if (index % 2 === 0) {
@@ -67,8 +60,7 @@ function App() {
         <div className="content">
           <Grid
             data={data}
-            // input={input}
-            // setInput={setInput}
+            setData={setData}
             validate={"placehlder"}
             rowColor={rowColor}
             getData={getData}

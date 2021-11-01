@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "arwes": "^1.0.0-alpha.5",
     "axios": "^0.21.4",
+    "ethers": "^5.5.1",
     "react": "^17.0.2",
     "react-cyberpunk": "^0.2.1",
     "react-dom": "^17.0.2",

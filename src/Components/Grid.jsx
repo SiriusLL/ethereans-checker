@@ -3,7 +3,8 @@ import NftForm from "./NftForm";
 
 import { ThemeProvider, createTheme, Row, Col } from "arwes";
 
-const Grid = ({ data, input, setInput, validate, rowColor, getData }) => {
+const Grid = ({ data, setData, rowColor, getData }) => {
+  // grabs image data and creates img tag
   function showImage() {
     if (data) {
       return (
@@ -17,8 +18,8 @@ const Grid = ({ data, input, setInput, validate, rowColor, getData }) => {
     }
   }
 
+  // Creates trait table
   function renderAttributeData(attr, i) {
-    // <div key={i}>{`${attr.trait_type}: ${attr.value}`}</div>
     return (
       <tr key={i} className={rowColor(i)}>
         <td>{`${attr.trait_type}`}</td>
@@ -26,7 +27,20 @@ const Grid = ({ data, input, setInput, validate, rowColor, getData }) => {
       </tr>
     );
   }
+  function showTable() {
+    console.log("data", data);
+    if (!data) {
+      return;
+    }
+    return (
+      <div className="traits">
+        <div>{data && data.name}</div>
+        <table>{data && data.attributes.map(renderAttributeData)}</table>
+      </div>
+    );
+  }
 
+  //Renders Grid
   return (
     <ThemeProvider theme={createTheme()}>
       <>
@@ -37,29 +51,19 @@ const Grid = ({ data, input, setInput, validate, rowColor, getData }) => {
         </Row>
         <Row>
           <Col sm={12} lg={12}>
-            <div></div>
+            {/* <div></div> */}
             <div>
-              <div className="traits">
-                <div>{data && data.name}</div>
-                <table>
-                  {data && data.attributes.map(renderAttributeData)}
-                </table>
-              </div>
+              {data && (
+                <div className="traits">
+                  <div>{data && data.name}</div>
+                  <table>
+                    {data && data.attributes.map(renderAttributeData)}
+                  </table>
+                </div>
+              )}
+              {/* {showTable} */}
               <div className="userInput">
-                <form
-                  autoComplete="off"
-                  onSubmit={(event) => event.preventDefault()}
-                >
-                  <NftForm
-                    // input={input}
-                    // setInput={setInput}
-                    // setInput={setInput}
-                    // validate={validate}
-                    getData={getData}
-                  />
-                  {/* <p className={invalid()}>Number must be between 1 and 10,000</p> */}
-                  {/* <button onClick={() => validate(input)}>AQUIRE TARGET</button> */}
-                </form>
+                <NftForm setData={setData} getData={getData} />
               </div>
             </div>
           </Col>
