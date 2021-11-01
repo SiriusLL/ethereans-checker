@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import NftForm from "./NftForm";
+import { Context } from "../Context";
 
 import { ThemeProvider, createTheme, Row, Col } from "arwes";
 
-const Grid = ({ data, setData, rowColor, getData }) => {
-  // grabs image data and creates img tag
+const Grid = () => {
+  const { data, setData, rowColor, getData } = useContext(Context);
+  // if there is data grabs image data and creates img tag
   function showImage() {
     if (data) {
       return (
@@ -27,18 +29,6 @@ const Grid = ({ data, setData, rowColor, getData }) => {
       </tr>
     );
   }
-  function showTable() {
-    console.log("data", data);
-    if (!data) {
-      return;
-    }
-    return (
-      <div className="traits">
-        <div>{data && data.name}</div>
-        <table>{data && data.attributes.map(renderAttributeData)}</table>
-      </div>
-    );
-  }
 
   //Renders Grid
   return (
@@ -51,7 +41,7 @@ const Grid = ({ data, setData, rowColor, getData }) => {
         </Row>
         <Row>
           <Col sm={12} lg={12}>
-            {/* <div></div> */}
+            {/* if there is data shows traits table */}
             <div>
               {data && (
                 <div className="traits">
@@ -61,9 +51,12 @@ const Grid = ({ data, setData, rowColor, getData }) => {
                   </table>
                 </div>
               )}
-              {/* {showTable} */}
+
               <div className="userInput">
-                <NftForm setData={setData} getData={getData} />
+                <NftForm
+                // setData={setData}
+                // getData={getData}
+                />
               </div>
             </div>
           </Col>

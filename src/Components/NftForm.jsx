@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Context } from "../Context";
 
-const NftForm = ({ setData, getData }) => {
+const NftForm = () => {
+  const { setData, getData } = useContext(Context);
+
   const [error, setError] = useState("");
   const [input, setInput] = useState("");
 

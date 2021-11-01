@@ -36,6 +36,9 @@ body {
 
 .image {
   justify-content: center;
+  color: rgb(190, 190, 243);
+  font-weight: bold;
+  font-size: x-large;
   /* border: 10px solid rgba(40, 241, 40, 0.479); */
   text-align: center;
   /* width: 100%; */
@@ -59,7 +62,7 @@ body {
   flex-direction: column;
   align-items: center;
   border: 10px solid rgba(255, 0, 0, 0.397);
-  color: lavender;
+  color: rgb(190, 190, 243);
   background-color: rgb(74, 71, 94);
   width: 95%;
   padding-top: 10px;
@@ -75,7 +78,7 @@ table {
   color: hsl(0, 0%, 80%);
   text-shadow: 0 0 0.1em currentColor;
   padding-top: 5px;
-  border-top: 1px solid black;
+  border-top: 1px solid rgb(190, 190, 243);
   /* transform-style: preserve-3d;
   animation: write linear both; */
 }

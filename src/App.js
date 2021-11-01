@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Grid from "./Components/Grid";
 import NavBar from "./Components/NavBar";
+import { Context } from "./Context";
 
 function App() {
   const [data, setData] = useState();
@@ -55,18 +56,20 @@ function App() {
 
   return (
     <>
-      <div className="App">
-        <NavBar />
-        <div className="content">
-          <Grid
-            data={data}
-            setData={setData}
-            validate={"placehlder"}
-            rowColor={rowColor}
-            getData={getData}
-          />
+      <Context.Provider value={{ data, setData, rowColor, getData }}>
+        <div className="App">
+          <NavBar />
+          <div className="content">
+            <Grid
+            // data={data}
+            // setData={setData}
+            // validate={"placehlder"}
+            // rowColor={rowColor}
+            // getData={getData}
+            />
+          </div>
         </div>
-      </div>
+      </Context.Provider>
     </>
   );
 }
