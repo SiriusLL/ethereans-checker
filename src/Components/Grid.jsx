@@ -5,7 +5,7 @@ import { Context } from "../Context";
 import { ThemeProvider, createTheme, Row, Col } from "arwes";
 
 const Grid = () => {
-  const { data, setData, rowColor, getData } = useContext(Context);
+  const { data, rowColor } = useContext(Context);
   // if there is data grabs image data and creates img tag
   function showImage() {
     if (data) {
