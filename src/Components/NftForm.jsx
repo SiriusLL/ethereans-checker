@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Context } from "../Context";
 
 const NftForm = () => {
-  const { setData, setDataEffect } = useContext(Context);
+  const { setData, setDataEffect, setLoading } = useContext(Context);
 
   const [error, setError] = useState("");
   const [input, setInput] = useState("");
@@ -26,6 +26,7 @@ const NftForm = () => {
     setError("");
     setInput("");
     setDataEffect(rawValue);
+    setLoading(true);
     // getData(rawValue);
   };
 

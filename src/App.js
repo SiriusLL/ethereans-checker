@@ -8,9 +8,10 @@ import { Context } from "./Context";
 function App() {
   const [data, setData] = useState();
   const [dataEffect, setDataEffect] = useState();
-  // const [input, setInput] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // setLoading(true);
     axios
       .get(
         `https://ipfs.io/ipfs/QmdYxMgJJS8MvMScv1AKnWkSxGGeMbPaKKoZ1nweXNTcT7/${dataEffect}`
@@ -19,6 +20,9 @@ function App() {
         console.log("res", res.data);
         // setState(JSON.stringify(res.data));
         setData(res.data);
+      })
+      .then(() => {
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -32,21 +36,6 @@ function App() {
       console.log(accounts[0]);
     });
 
-  // const getData = async (input) => {
-  //   await axios
-  //     .get(
-  //       `https://ipfs.io/ipfs/QmdYxMgJJS8MvMScv1AKnWkSxGGeMbPaKKoZ1nweXNTcT7/${input}`
-  //     )
-  //     .then((res) => {
-  //       console.log("res", res.data);
-  //       // setState(JSON.stringify(res.data));
-  //       setData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Error", error);
-  //     });
-  // };
-
   const rowColor = (index) => {
     if (index % 2 === 0) {
       return "even-r";
@@ -57,7 +46,9 @@ function App() {
 
   return (
     <>
-      <Context.Provider value={{ data, setData, rowColor, setDataEffect }}>
+      <Context.Provider
+        value={{ data, setData, rowColor, setDataEffect, loading, setLoading }}
+      >
         <div className="App">
           <NavBar />
           <div className="content">

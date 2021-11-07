@@ -1,24 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import NftForm from "./NftForm";
 import { Context } from "../Context";
-
+import ShowImage from "./ShowImage";
+import Status from "./Status";
 import { ThemeProvider, createTheme, Row, Col } from "arwes";
 
 const Grid = () => {
-  const { data, rowColor } = useContext(Context);
-  // if there is data grabs image data and creates img tag
-  function showImage() {
-    if (data) {
-      return (
-        <img
-          src={`https://ipfs.io/ipfs/${data && data.image.split("/")[2]}`}
-          alt={data && data.name}
-        />
-      );
-    } else {
-      return <p>Enter an NFT# bewtwen 1 and 10,000</p>;
-    }
-  }
+  // const { loading, setLoading } = useState(false);
+  const { data, rowColor, loading } = useContext(Context);
 
   // Creates trait table
   function renderAttributeData(attr, i) {
@@ -36,20 +25,24 @@ const Grid = () => {
       <>
         <Row>
           <Col sm={6}>
-            <div className="image">{showImage()}</div>
+            <div className="image">{loading ? <Status /> : <ShowImage />}</div>
           </Col>
         </Row>
         <Row>
           <Col sm={12} lg={12}>
             {/* if there is data shows traits table */}
             <div>
-              {data && (
-                <div className="traits">
-                  <div>{data && data.name}</div>
-                  <table>
-                    {data && data.attributes.map(renderAttributeData)}
-                  </table>
-                </div>
+              {loading ? (
+                <Status />
+              ) : (
+                data && (
+                  <div className="traits">
+                    <div>{data && data.name}</div>
+                    <table>
+                      {data && data.attributes.map(renderAttributeData)}
+                    </table>
+                  </div>
+                )
               )}
 
               <div className="userInput">
